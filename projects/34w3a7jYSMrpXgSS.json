@@ -1,0 +1,1034 @@
+{
+  "root": {
+    "type": "root",
+    "children": [
+      {
+        "type": "text",
+        "id": "d1f5d33c-5e27-4201-9f11-9f9a9ff68e21",
+        "text": {
+          "ops": [
+            {
+              "insert": "Voyage Presets"
+            },
+            {
+              "insert": "\n",
+              "attributes": {
+                "paragraph": true
+              }
+            }
+          ]
+        },
+        "format": null,
+        "collapsed": false,
+        "completed": false,
+        "children": [
+          {
+            "type": "text",
+            "id": "fbb0f146-496f-40f6-a04a-aec2e5bc17cc",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Dusk Lantern",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@prset": "Dusk Lantern",
+              "@descr": "A warm, slow-release tone with a soft sea-glass shimmer.",
+              "@breth": 18,
+              "@drift": 6,
+              "@sample": "Sample data",
+              "@yearn": 35,
+              "@mist1": 72,
+              "@tide1": 1800,
+              "@hang1": 4.5
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "65acec83-267b-44dc-8c2c-4c201b480033",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Open Water",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@prset": "Open Water",
+              "@descr": "A little more air and width, with a gently wandering pitch.",
+              "@breth": 25,
+              "@drift": 8,
+              "@sample": "Sample data",
+              "@yearn": 48,
+              "@mist1": 82,
+              "@tide1": 2100,
+              "@hang1": 5.8
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "37d93747-9e17-49ae-a011-d26a94ea98bd",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Far Horizon",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@prset": "Far Horizon",
+              "@descr": "A quieter, darker bed for long tones and open pauses.",
+              "@breth": 12,
+              "@drift": 4,
+              "@sample": "Sample data",
+              "@yearn": 22,
+              "@mist1": 68,
+              "@tide1": 1450,
+              "@hang1": 7.2
+            },
+            "children": []
+          },
+          {
+            "type": "text",
+            "id": "ef8f3c54-7198-4d8d-9aad-e70eceb8a17d",
+            "text": {
+              "ops": [
+                {
+                  "insert": "Weekly Voyage Note",
+                  "attributes": {}
+                },
+                {
+                  "insert": "\n",
+                  "attributes": {
+                    "paragraph": true
+                  }
+                }
+              ]
+            },
+            "format": {
+              "node": "checkbox",
+              "children": null
+            },
+            "collapsed": false,
+            "completed": false,
+            "attributes": {
+              "@prset": "Weekly Voyage Note",
+              "@descr": "Your weekly voyage reflection will appear here.",
+              "@breth": 18,
+              "@drift": 6,
+              "@sample": "Journal",
+              "@yearn": 35,
+              "@mist1": 72,
+              "@tide1": 1800,
+              "@hang1": 4.5
+            },
+            "children": []
+          }
+        ]
+      }
+    ],
+    "views": {
+      "list": {
+        "id": "list",
+        "type": "list",
+        "rank": "A",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@prset": {
+            "id": "/attributes/@prset",
+            "fieldPath": "/attributes/@prset",
+            "rank": "z"
+          },
+          "/attributes/@descr": {
+            "id": "/attributes/@descr",
+            "fieldPath": "/attributes/@descr",
+            "rank": "zV"
+          },
+          "/attributes/@hang1": {
+            "id": "/attributes/@hang1",
+            "fieldPath": "/attributes/@hang1",
+            "rank": "zk"
+          },
+          "/attributes/@yearn": {
+            "id": "/attributes/@yearn",
+            "fieldPath": "/attributes/@yearn",
+            "rank": "zs"
+          },
+          "/attributes/@mist1": {
+            "id": "/attributes/@mist1",
+            "fieldPath": "/attributes/@mist1",
+            "rank": "zw"
+          },
+          "/attributes/@drift": {
+            "id": "/attributes/@drift",
+            "fieldPath": "/attributes/@drift",
+            "rank": "zy"
+          },
+          "/attributes/@tide1": {
+            "id": "/attributes/@tide1",
+            "fieldPath": "/attributes/@tide1",
+            "rank": "zz"
+          },
+          "/attributes/@breth": {
+            "id": "/attributes/@breth",
+            "fieldPath": "/attributes/@breth",
+            "rank": "zzV"
+          },
+          "/attributes/@sample": {
+            "id": "/attributes/@sample",
+            "fieldPath": "/attributes/@sample",
+            "rank": "zzk"
+          }
+        }
+      },
+      "board": {
+        "id": "board",
+        "type": "board",
+        "rank": "B",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@prset": {
+            "id": "/attributes/@prset",
+            "fieldPath": "/attributes/@prset",
+            "rank": "z"
+          },
+          "/attributes/@descr": {
+            "id": "/attributes/@descr",
+            "fieldPath": "/attributes/@descr",
+            "rank": "zV"
+          },
+          "/attributes/@hang1": {
+            "id": "/attributes/@hang1",
+            "fieldPath": "/attributes/@hang1",
+            "rank": "zk"
+          },
+          "/attributes/@yearn": {
+            "id": "/attributes/@yearn",
+            "fieldPath": "/attributes/@yearn",
+            "rank": "zs"
+          },
+          "/attributes/@mist1": {
+            "id": "/attributes/@mist1",
+            "fieldPath": "/attributes/@mist1",
+            "rank": "zw"
+          },
+          "/attributes/@drift": {
+            "id": "/attributes/@drift",
+            "fieldPath": "/attributes/@drift",
+            "rank": "zy"
+          },
+          "/attributes/@tide1": {
+            "id": "/attributes/@tide1",
+            "fieldPath": "/attributes/@tide1",
+            "rank": "zz"
+          },
+          "/attributes/@breth": {
+            "id": "/attributes/@breth",
+            "fieldPath": "/attributes/@breth",
+            "rank": "zzV"
+          },
+          "/attributes/@sample": {
+            "id": "/attributes/@sample",
+            "fieldPath": "/attributes/@sample",
+            "rank": "zzk"
+          }
+        }
+      },
+      "mindmap": {
+        "id": "mindmap",
+        "type": "mindmap",
+        "rank": "D",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@prset": {
+            "id": "/attributes/@prset",
+            "fieldPath": "/attributes/@prset",
+            "rank": "z"
+          },
+          "/attributes/@descr": {
+            "id": "/attributes/@descr",
+            "fieldPath": "/attributes/@descr",
+            "rank": "zV"
+          },
+          "/attributes/@hang1": {
+            "id": "/attributes/@hang1",
+            "fieldPath": "/attributes/@hang1",
+            "rank": "zk"
+          },
+          "/attributes/@yearn": {
+            "id": "/attributes/@yearn",
+            "fieldPath": "/attributes/@yearn",
+            "rank": "zs"
+          },
+          "/attributes/@mist1": {
+            "id": "/attributes/@mist1",
+            "fieldPath": "/attributes/@mist1",
+            "rank": "zw"
+          },
+          "/attributes/@drift": {
+            "id": "/attributes/@drift",
+            "fieldPath": "/attributes/@drift",
+            "rank": "zy"
+          },
+          "/attributes/@tide1": {
+            "id": "/attributes/@tide1",
+            "fieldPath": "/attributes/@tide1",
+            "rank": "zz"
+          },
+          "/attributes/@breth": {
+            "id": "/attributes/@breth",
+            "fieldPath": "/attributes/@breth",
+            "rank": "zzV"
+          },
+          "/attributes/@sample": {
+            "id": "/attributes/@sample",
+            "fieldPath": "/attributes/@sample",
+            "rank": "zzk"
+          }
+        }
+      },
+      "orgchart": {
+        "id": "orgchart",
+        "type": "orgchart",
+        "rank": "E",
+        "displayedFields": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7"
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A"
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F"
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N"
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V"
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c"
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k"
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s"
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t"
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u"
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF"
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF"
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x"
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y"
+          },
+          "/attributes/@prset": {
+            "id": "/attributes/@prset",
+            "fieldPath": "/attributes/@prset",
+            "rank": "z"
+          },
+          "/attributes/@descr": {
+            "id": "/attributes/@descr",
+            "fieldPath": "/attributes/@descr",
+            "rank": "zV"
+          },
+          "/attributes/@hang1": {
+            "id": "/attributes/@hang1",
+            "fieldPath": "/attributes/@hang1",
+            "rank": "zk"
+          },
+          "/attributes/@yearn": {
+            "id": "/attributes/@yearn",
+            "fieldPath": "/attributes/@yearn",
+            "rank": "zs"
+          },
+          "/attributes/@mist1": {
+            "id": "/attributes/@mist1",
+            "fieldPath": "/attributes/@mist1",
+            "rank": "zw"
+          },
+          "/attributes/@drift": {
+            "id": "/attributes/@drift",
+            "fieldPath": "/attributes/@drift",
+            "rank": "zy"
+          },
+          "/attributes/@tide1": {
+            "id": "/attributes/@tide1",
+            "fieldPath": "/attributes/@tide1",
+            "rank": "zz"
+          },
+          "/attributes/@breth": {
+            "id": "/attributes/@breth",
+            "fieldPath": "/attributes/@breth",
+            "rank": "zzV"
+          },
+          "/attributes/@sample": {
+            "id": "/attributes/@sample",
+            "fieldPath": "/attributes/@sample",
+            "rank": "zzk"
+          }
+        }
+      },
+      "gantt": {
+        "id": "gantt",
+        "type": "gantt",
+        "rank": "F",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F",
+            "hidden": true
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N",
+            "hidden": true
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "/attributes/@prset": {
+            "id": "/attributes/@prset",
+            "fieldPath": "/attributes/@prset",
+            "rank": "z",
+            "hidden": false
+          },
+          "/attributes/@descr": {
+            "id": "/attributes/@descr",
+            "fieldPath": "/attributes/@descr",
+            "rank": "zV",
+            "hidden": false
+          },
+          "/attributes/@hang1": {
+            "id": "/attributes/@hang1",
+            "fieldPath": "/attributes/@hang1",
+            "rank": "zk",
+            "hidden": false
+          },
+          "/attributes/@yearn": {
+            "id": "/attributes/@yearn",
+            "fieldPath": "/attributes/@yearn",
+            "rank": "zs",
+            "hidden": false
+          },
+          "/attributes/@mist1": {
+            "id": "/attributes/@mist1",
+            "fieldPath": "/attributes/@mist1",
+            "rank": "zw",
+            "hidden": false
+          },
+          "/attributes/@drift": {
+            "id": "/attributes/@drift",
+            "fieldPath": "/attributes/@drift",
+            "rank": "zy",
+            "hidden": false
+          },
+          "/attributes/@tide1": {
+            "id": "/attributes/@tide1",
+            "fieldPath": "/attributes/@tide1",
+            "rank": "zz",
+            "hidden": false
+          },
+          "/attributes/@breth": {
+            "id": "/attributes/@breth",
+            "fieldPath": "/attributes/@breth",
+            "rank": "zzV",
+            "hidden": false
+          },
+          "/attributes/@sample": {
+            "id": "/attributes/@sample",
+            "fieldPath": "/attributes/@sample",
+            "rank": "zzk",
+            "hidden": false
+          }
+        }
+      },
+      "table": {
+        "id": "table",
+        "type": "table",
+        "rank": "V",
+        "columns": {
+          "/text": {
+            "id": "/text",
+            "fieldPath": "/text",
+            "rank": "7",
+            "width": 480
+          },
+          "/attributes/agent": {
+            "id": "/attributes/agent",
+            "fieldPath": "/attributes/agent",
+            "rank": "A",
+            "hidden": true
+          },
+          "/attributes/date": {
+            "id": "/attributes/date",
+            "fieldPath": "/attributes/date",
+            "rank": "F",
+            "hidden": true
+          },
+          "/attributes/assignee": {
+            "id": "/attributes/assignee",
+            "fieldPath": "/attributes/assignee",
+            "rank": "N",
+            "hidden": true
+          },
+          "/attributes/comment": {
+            "id": "/attributes/comment",
+            "fieldPath": "/attributes/comment",
+            "rank": "V",
+            "hidden": true
+          },
+          "/attributes/reaction": {
+            "id": "/attributes/reaction",
+            "fieldPath": "/attributes/reaction",
+            "rank": "c",
+            "hidden": true
+          },
+          "/attributes/timer": {
+            "id": "/attributes/timer",
+            "fieldPath": "/attributes/timer",
+            "rank": "k",
+            "hidden": true
+          },
+          "/attributes/media": {
+            "id": "/attributes/media",
+            "fieldPath": "/attributes/media",
+            "rank": "s",
+            "hidden": true
+          },
+          "/attributes/created/at": {
+            "id": "/attributes/created/at",
+            "fieldPath": "/attributes/created/at",
+            "rank": "t",
+            "hidden": true
+          },
+          "/attributes/created/by": {
+            "id": "/attributes/created/by",
+            "fieldPath": "/attributes/created/by",
+            "rank": "u",
+            "hidden": true
+          },
+          "/attributes/updated/at": {
+            "id": "/attributes/updated/at",
+            "fieldPath": "/attributes/updated/at",
+            "rank": "vF",
+            "hidden": true
+          },
+          "/attributes/updated/by": {
+            "id": "/attributes/updated/by",
+            "fieldPath": "/attributes/updated/by",
+            "rank": "wF",
+            "hidden": true
+          },
+          "/attributes/completed/at": {
+            "id": "/attributes/completed/at",
+            "fieldPath": "/attributes/completed/at",
+            "rank": "x",
+            "hidden": true
+          },
+          "/attributes/completed/by": {
+            "id": "/attributes/completed/by",
+            "fieldPath": "/attributes/completed/by",
+            "rank": "y",
+            "hidden": true
+          },
+          "/attributes/@prset": {
+            "id": "/attributes/@prset",
+            "fieldPath": "/attributes/@prset",
+            "rank": "z",
+            "hidden": false
+          },
+          "/attributes/@descr": {
+            "id": "/attributes/@descr",
+            "fieldPath": "/attributes/@descr",
+            "rank": "zV",
+            "hidden": false
+          },
+          "/attributes/@hang1": {
+            "id": "/attributes/@hang1",
+            "fieldPath": "/attributes/@hang1",
+            "rank": "zk",
+            "hidden": false
+          },
+          "/attributes/@yearn": {
+            "id": "/attributes/@yearn",
+            "fieldPath": "/attributes/@yearn",
+            "rank": "zs",
+            "hidden": false
+          },
+          "/attributes/@mist1": {
+            "id": "/attributes/@mist1",
+            "fieldPath": "/attributes/@mist1",
+            "rank": "zw",
+            "hidden": false
+          },
+          "/attributes/@drift": {
+            "id": "/attributes/@drift",
+            "fieldPath": "/attributes/@drift",
+            "rank": "zy",
+            "hidden": false
+          },
+          "/attributes/@tide1": {
+            "id": "/attributes/@tide1",
+            "fieldPath": "/attributes/@tide1",
+            "rank": "zz",
+            "hidden": false
+          },
+          "/attributes/@breth": {
+            "id": "/attributes/@breth",
+            "fieldPath": "/attributes/@breth",
+            "rank": "zzV",
+            "hidden": false
+          },
+          "/attributes/@sample": {
+            "id": "/attributes/@sample",
+            "fieldPath": "/attributes/@sample",
+            "rank": "zzk",
+            "hidden": false
+          }
+        }
+      }
+    },
+    "fields": {
+      "@prset": {
+        "type": "string",
+        "displayName": "Name"
+      },
+      "@descr": {
+        "type": "string",
+        "displayName": "Notes"
+      },
+      "@breth": {
+        "type": "number",
+        "displayName": "Breath (%)",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      },
+      "@drift": {
+        "type": "number",
+        "displayName": "Drift (cents)",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      },
+      "@sample": {
+        "type": "string",
+        "displayName": "Label"
+      },
+      "@yearn": {
+        "type": "number",
+        "displayName": "Yearn (%)",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      },
+      "@mist1": {
+        "type": "number",
+        "displayName": "Mist (%)",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      },
+      "@tide1": {
+        "type": "number",
+        "displayName": "Tide (Hz)",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      },
+      "@hang1": {
+        "type": "number",
+        "displayName": "Hang (seconds)",
+        "render": {
+          "type": "text"
+        },
+        "format": {
+          "type": "decimal"
+        }
+      }
+    }
+  },
+  "preferences": {
+    "defaultView": "table",
+    "avatar": {
+      "type": "emoji",
+      "value": "📌"
+    }
+  }
+}

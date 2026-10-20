@@ -1,0 +1,192 @@
+/* Genesis palette family: Ocean Depth [ocean-depth]
+   Marine teal depths rising to sea glass, one foam accent. Refine on-family: keep these hues and relight them; never swap to a generic indigo/blue SaaS palette.
+   This seed is a starting point, not a mandate: when the app's subject clearly
+   calls for a different mood (game HUD, trading terminal, cinema and media all
+   read dark-anchored), retheme deliberately to match the subject - but BOTH
+   theme blocks must keep working. Dark-anchored means the dark scene leads;
+   `:root` stays a usable LIGHT rendering of the same scene (light surfaces,
+   dark foregrounds, same hue family). A `:root` that copies the dark values
+   leaves the app with no light theme. Either way, add your own one-line palette
+   rationale comment below this header. */
+/* Voyager: salt-dark water, sea-glass controls, and soft lunar light. */
+/* Tailwind CSS v3 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Pair the UA color-scheme with the theme so native scrollbars, form
+       controls, and the canvas match. Without this a dark-themed app paints
+       light native scrollbars (visible when embedded on dark surfaces). */
+    color-scheme: light;
+    /* The mode a first-time visitor sees: dark or light. A mode the visitor
+       picked later wins. */
+    --genesis-default-theme: dark;
+    --font-sans: 'Geist', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --background: 192 38% 96%;
+    --foreground: 200 45% 10%;
+    --muted: 192 30% 90%;
+    --muted-foreground: 198 20% 38%;
+    --popover: 190 40% 98%;
+    --popover-foreground: 200 45% 12%;
+    --border: 192 24% 84%;
+    --input: 192 24% 82%;
+    --card: 190 42% 97%;
+    --card-foreground: 200 45% 11%;
+    --primary: 188 80% 30%;
+    --primary-foreground: 180 60% 97%;
+    --secondary: 192 28% 91%;
+    --secondary-foreground: 200 40% 16%;
+    --accent: 180 45% 91%;
+    --accent-foreground: 186 65% 24%;
+    --destructive: 0 74% 46%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 188 74% 34%;
+    --radius: 0.5rem;
+    --chart-1: 188 74% 40%;
+    --chart-2: 168 55% 42%;
+    --chart-3: 140 40% 44%;
+    --chart-4: 35 70% 50%;
+    --chart-5: 280 30% 55%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --font-sans: 'Geist', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --background: 202 55% 5%;
+    --foreground: 190 30% 89%;
+    --muted: 200 45% 11%;
+    --muted-foreground: 192 20% 62%;
+    --accent: 184 45% 15%;
+    --accent-foreground: 180 70% 68%;
+    --popover: 202 50% 7%;
+    --popover-foreground: 190 26% 86%;
+    --border: 198 40% 15%;
+    --input: 198 40% 16%;
+    --card: 202 50% 6%;
+    --card-foreground: 190 28% 88%;
+    --primary: 182 65% 60%;
+    --primary-foreground: 200 70% 8%;
+    --secondary: 198 42% 13%;
+    --secondary-foreground: 190 24% 87%;
+    --destructive: 0 62% 39%;
+    --destructive-foreground: 0 0% 97%;
+    --ring: 182 60% 55%;
+    --chart-1: 188 74% 40%;
+    --chart-2: 168 55% 42%;
+    --chart-3: 140 40% 44%;
+    --chart-4: 35 70% 50%;
+    --chart-5: 280 30% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+:root {
+  --sidebar: hsl(192 34% 94%);
+  --sidebar-foreground: hsl(200 38% 20%);
+  --sidebar-primary: hsl(188 78% 29%);
+  --sidebar-primary-foreground: hsl(180 58% 96%);
+  --sidebar-accent: hsl(182 42% 89%);
+  --sidebar-accent-foreground: hsl(186 62% 22%);
+  --sidebar-border: hsl(192 22% 82%);
+  --sidebar-ring: hsl(188 72% 33%);
+}
+
+.dark {
+  --sidebar: hsl(202 48% 8%);
+  --sidebar-foreground: hsl(190 24% 83%);
+  --sidebar-primary: hsl(182 63% 58%);
+  --sidebar-primary-foreground: hsl(200 65% 10%);
+  --sidebar-accent: hsl(184 42% 16%);
+  --sidebar-accent-foreground: hsl(180 68% 66%);
+  --sidebar-border: hsl(198 36% 17%);
+  --sidebar-ring: hsl(182 58% 53%);
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Full screen spinner styles */
+.genesis__spinner-container {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.genesis__spinner-ring {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid transparent;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: genesis__spin 1s linear infinite;
+}
+
+@keyframes genesis__spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .genesis__spinner-ring {
+    animation: none;
+    border-top-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.voyager-stage {
+  background: linear-gradient(138deg, hsl(var(--card)) 0%, hsl(var(--background)) 62%, hsl(var(--accent)) 135%);
+}
+
+.voyager-glow {
+  background: radial-gradient(ellipse at 18% 0%, hsl(var(--primary) / 0.18), transparent 58%);
+}
+
+.voyager-stars {
+  background-image:
+    radial-gradient(circle, hsl(var(--primary) / 0.38) 0 1px, transparent 1.5px),
+    radial-gradient(circle, hsl(var(--foreground) / 0.26) 0 1px, transparent 1.5px),
+    radial-gradient(ellipse at 80% 100%, hsl(var(--primary) / 0.11), transparent 48%);
+  background-position: 0 0, 30px 45px, center;
+  background-size: 76px 82px, 112px 96px, 100% 100%;
+  animation: voyager-drift 28s ease-in-out infinite alternate;
+}
+
+.reed-key {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@keyframes voyager-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voyager-stars {
+    animation: none;
+  }
+}

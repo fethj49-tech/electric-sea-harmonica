@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07151b">
+  <meta name="description" content="A small electric sea harmonica for open water and quiet moments.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Electric Sea Harmonica</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07151b;
+      --surface: rgba(12, 29, 37, .88);
+      --surface-soft: rgba(20, 43, 50, .66);
+      --line: rgba(148, 203, 198, .16);
+      --text: #e4f2ee;
+      --muted: #a0b8b5;
+      --accent: #7bd3c6;
+      --accent-strong: #9be8d7;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .24);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(ellipse at 17% 0%, rgba(46, 130, 123, .17), transparent 38%),
+        radial-gradient(ellipse at 92% 16%, rgba(52, 95, 121, .13), transparent 32%), var(--bg);
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .shell { width: min(1180px, 100% - 32px); margin: 0 auto; padding: 18px 0 56px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; min-height: 44px; }
+    .brand-mark { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(123, 211, 198, .35); border-radius: 50%; background: rgba(123, 211, 198, .1); color: var(--accent-strong); font-size: 20px; }
+    .brand-name { display: block; font-size: 12px; font-weight: 720; letter-spacing: .17em; }
+    .brand-subtitle { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: .19em; }
+    .status { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #64817f; }
+    .status-dot.awake { background: var(--accent); box-shadow: 0 0 14px rgba(123, 211, 198, .7); }
+    .hero { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(230px, .65fr); align-items: end; gap: 32px; margin-top: 24px; padding: clamp(24px, 5vw, 54px); border: 1px solid var(--line); border-radius: 30px; background: linear-gradient(137deg, rgba(16, 43, 49, .92), rgba(8, 22, 30, .94) 64%, rgba(18, 47, 49, .84)); box-shadow: var(--shadow); }
+    .hero::before { position: absolute; z-index: -1; inset: 0; content: ""; pointer-events: none; opacity: .38; background-image: radial-gradient(circle, rgba(186, 237, 224, .7) 0 1px, transparent 1.4px), radial-gradient(circle, rgba(136, 186, 200, .4) 0 1px, transparent 1.3px); background-position: 0 0, 26px 38px; background-size: 82px 86px, 117px 101px; mask-image: linear-gradient(115deg, #000, transparent 75%); }
+    .eyebrow, .section-kicker { margin: 0; color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
+    h1 { max-width: 620px; margin: 17px 0 12px; font-size: clamp(38px, 6.5vw, 68px); font-weight: 370; letter-spacing: -.055em; line-height: 1.04; }
+    h1 span { color: var(--accent-strong); font-weight: 650; }
+    .hero-copy { max-width: 520px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .hero-action { display: grid; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: rgba(2, 14, 19, .34); backdrop-filter: blur(12px); }
+    .hero-action p { margin: 0; }
+    .hero-action .headline { font-size: 14px; font-weight: 650; }
+    .hero-action .subline { margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .primary-button, .soft-button, .quiet-button, .preset-button { min-height: 44px; border: 1px solid transparent; border-radius: 999px; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .primary-button { padding: 0 20px; background: var(--accent); color: #06201f; font-weight: 750; }
+    .primary-button:hover { transform: translateY(-1px); background: var(--accent-strong); }
+    .soft-button { padding: 0 14px; border-color: var(--line); background: rgba(222, 244, 237, .04); color: var(--text); }
+    .soft-button:hover, .preset-button:hover { border-color: rgba(123, 211, 198, .55); background: rgba(123, 211, 198, .09); }
+    .quiet-button { padding: 0 14px; background: transparent; color: var(--muted); }
+    button:focus-visible, input:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; }
+    button:disabled { cursor: not-allowed; opacity: .55; }
+    .facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 25px; color: var(--muted); font-size: 11px; }
+    .fact { display: flex; align-items: center; gap: 8px; }
+    .fact-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .alert { min-height: 20px; margin: 10px 0 0; color: #ffb7ae; font-size: 13px; }
+    .section-grid { display: grid; grid-template-columns: minmax(235px, .7fr) minmax(0, 1.3fr); gap: 16px; margin-top: 16px; }
+    .panel { min-width: 0; padding: 21px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: 0 12px 44px rgba(0, 0, 0, .12); }
+    .panel-header { margin-bottom: 17px; }
+    .panel-header h2 { margin: 6px 0 0; font-size: 20px; font-weight: 560; letter-spacing: -.025em; }
+    .panel-header p:not(.section-kicker) { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mode-grid button { display: flex; align-items: center; justify-content: flex-start; gap: 9px; text-align: left; }
+    .mode-state { display: flex; align-items: center; justify-content: flex-end; gap: 8px; min-height: 44px; color: var(--muted); font-size: 11px; }
+    .rail-header { display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+    .rail-hint { color: var(--muted); font-size: 11px; text-align: right; }
+    .reed-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+    .reed { display: flex; min-width: 0; min-height: 124px; flex-direction: column; align-items: center; justify-content: space-between; padding: 11px 4px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-soft); cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .reed:hover { transform: translateY(-2px); border-color: rgba(123, 211, 198, .5); }
+    .reed.accidental { background: rgba(45, 83, 85, .58); }
+    .reed.active { border-color: var(--accent); background: rgba(123, 211, 198, .14); box-shadow: 0 0 23px rgba(123, 211, 198, .12); }
+    .reed:disabled { transform: none; }
+    .reed-index, .reed-key { color: var(--muted); font: 10px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .reed-note { font-size: 14px; font-weight: 650; }
+    .reed-key { padding: 3px 6px; border-radius: 6px; background: rgba(2, 12, 16, .45); text-transform: uppercase; }
+    .reed-rest { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
+    .control-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .control { min-width: 0; padding: 15px; border: 1px solid rgba(148, 203, 198, .1); border-radius: 17px; background: rgba(123, 211, 198, .035); }
+    .control-top { display: flex; align-items: start; justify-content: space-between; gap: 8px; }
+    .control label { display: block; font-size: 13px; font-weight: 680; }
+    .control small { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+    .control output { flex: none; color: var(--accent-strong); font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+    input[type="range"] { display: block; width: 100%; height: 28px; margin: 12px 0 3px; accent-color: var(--accent); cursor: pointer; }
+    .range-ends { display: flex; justify-content: space-between; color: var(--muted); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+    .preset-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 16px; margin-top: 16px; }
+    .form-stack { display: grid; gap: 12px; }
+    .form-stack label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 11px; }
+    .form-stack input[type="text"] { width: 100%; min-height: 44px; padding: 0 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(2, 12, 16, .35); color: var(--text); }
+    .preset-list { display: grid; gap: 9px; }
+    .preset-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px; border: 1px solid var(--line); border-radius: 15px; background: rgba(2, 12, 16, .2); }
+    .preset-copy { min-width: 0; }
+    .preset-name { overflow: hidden; margin: 0; font-size: 13px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+    .preset-notes { display: -webkit-box; overflow: hidden; margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .preset-meta { margin: 6px 0 0; color: var(--muted); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+    .preset-button { flex: none; padding: 0 13px; border-color: var(--line); background: transparent; font-size: 11px; }
+    .empty { padding: 14px; border-radius: 14px; background: rgba(123, 211, 198, .04); color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .footnote { margin: 22px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; text-align: center; }
+    @media (min-width: 900px) { .reed-grid { grid-template-columns: repeat(15, minmax(0, 1fr)); } .reed { min-height: 145px; } }
+    @media (max-width: 760px) { .hero { grid-template-columns: 1fr; gap: 22px; } .hero-action { max-width: 420px; } .section-grid, .preset-grid { grid-template-columns: 1fr; } .control-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 430px) { .shell { width: min(100% - 22px, 1180px); padding-top: 10px; } .panel { padding: 16px; border-radius: 20px; } .hero { border-radius: 24px; } .control-grid { gap: 8px; } .control { padding: 12px; } .reed { min-height: 110px; } .rail-hint { max-width: 130px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Electric Sea Harmonica home">
+        <span class="brand-mark" aria-hidden="true">≈</span>
+        <span><span class="brand-name">VOYAGER</span><span class="brand-subtitle">ELECTRIC SEA HARMONICA</span></span>
+      </a>
+      <div class="status" aria-live="polite"><span id="status-dot" class="status-dot" aria-hidden="true"></span><span id="status-text">At rest</span></div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">✦ A little instrument for open water</p>
+          <h1 id="hero-title">Let the tide <span>carry</span> the note.</h1>
+          <p class="hero-copy">Fifteen reeds, a breath of sea air, and room for the sound to wander. Find a key, then follow it somewhere quiet.</p>
+          <div class="facts"><span class="fact"><span class="fact-dot"></span>C3 to C5</span><span class="fact">Keys Z–M, then A–K</span><span class="fact">Sound stays in this browser</span></div>
+        </div>
+        <div class="hero-action">
+          <div><p id="wake-headline" class="headline">Begin with one breath</p><p id="wake-subline" class="subline">Audio begins only when you invite it.</p></div>
+          <button id="wake-button" class="primary-button" type="button">▶ &nbsp; Awaken instrument</button>
+        </div>
+      </section>
+      <p id="audio-error" class="alert" role="alert"></p>
+
+      <div class="section-grid">
+        <section class="panel" aria-labelledby="soundscape-title">
+          <div class="panel-header"><p class="section-kicker">◉ Soundscape</p><h2 id="soundscape-title">Choose your current</h2></div>
+          <div class="mode-grid">
+            <button id="drone-button" class="soft-button" type="button" disabled>〰 &nbsp; Sea drone</button>
+            <button id="pad-button" class="soft-button" type="button" disabled>♫ &nbsp; Voyage pad</button>
+            <button id="silence-button" class="quiet-button" type="button" disabled>◌ &nbsp; Silence all</button>
+            <div class="mode-state" aria-live="polite"><span aria-hidden="true">◖</span><span id="mode-text">Resting</span></div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="rail-title">
+          <div class="panel-header rail-header"><div><p class="section-kicker">♫ The reed rail</p><h2 id="rail-title">Play the open notes</h2></div><span class="rail-hint">Hold to sound<br>release to let it hang</span></div>
+          <div id="reed-grid" class="reed-grid" aria-label="Fifteen playable notes"></div>
+          <p id="reed-rest" class="reed-rest">Awaken the instrument to play the reeds.</p>
+        </section>
+      </div>
+
+      <section class="panel" style="margin-top:16px" aria-labelledby="controls-title">
+        <div class="panel-header"><p class="section-kicker">◌ Tuning the water</p><h2 id="controls-title">Shape the breath</h2><p>Every movement changes the sound as you play.</p></div>
+        <div id="control-grid" class="control-grid"></div>
+      </section>
+
+      <div class="preset-grid">
+        <section class="panel" aria-labelledby="save-title">
+          <div class="panel-header"><p class="section-kicker">✧ Save a sound</p><h2 id="save-title">Keep this setting</h2><p>Save the six current controls as a preset you can return to on this device.</p></div>
+          <form id="preset-form" class="form-stack">
+            <div><label for="preset-name">Preset name</label><input id="preset-name" name="presetName" type="text" maxlength="60" autocomplete="off" placeholder="Name this sound" required></div>
+            <div><label for="preset-notes">A note for later <span>(optional)</span></label><input id="preset-notes" name="presetNotes" type="text" maxlength="180" autocomplete="off" placeholder="What does it feel like?"></div>
+            <button id="save-button" class="primary-button" type="submit">Save this preset</button>
+            <p id="preset-message" class="alert" role="status"></p>
+          </form>
+        </section>
+        <section class="panel" aria-labelledby="presets-title">
+          <div class="panel-header"><p class="section-kicker">〰 Your voyage library</p><h2 id="presets-title">Presets to return to</h2></div>
+          <div id="preset-list" class="preset-list" aria-live="polite"></div>
+        </section>
+      </div>
+    </main>
+    <p class="footnote">Your settings are stored only on this device. The instrument makes its sound in your browser and does not send audio or preset data anywhere.</p>
+  </div>
+
+  <script>
+    'use strict';
+    const NOTE_NAMES = ['C3','D3','Eb3','F3','G3','A3','Bb3','C4','D4','Eb4','F4','G4','A4','Bb4','C5'];
+    const NOTE_MIDI = [48,50,51,53,55,57,58,60,62,63,65,67,69,70,72];
+    const KEY_MAP = { z:0,x:1,c:2,v:3,b:4,n:5,m:6,',':7,'.':8,'/':9,a:7,s:8,d:9,f:10,g:11,h:12,j:13,k:14,q:3,w:4,e:5,r:6,t:7,y:8,u:9,i:10,o:11,p:12 };
+    const DEFAULT_CONTROLS = { hang:4.5, yearn:35, mist:72, drift:6, tide:1800, breath:18 };
+    const CONTROL_DEFINITIONS = [
+      { key:'hang',title:'Hang',description:'How long each note lingers',min:0.6,max:8,step:0.1,unit:'s' },
+      { key:'yearn',title:'Yearn',description:'A slow, tender vibrato',min:0,max:100,step:1,unit:'%' },
+      { key:'mist',title:'Mist',description:'The room around the reeds',min:0,max:100,step:1,unit:'%' },
+      { key:'drift',title:'Drift',description:'Gentle pitch movement',min:0,max:16,step:1,unit:'¢' },
+      { key:'tide',title:'Tide',description:'Warmth of the low-pass filter',min:300,max:6000,step:50,unit:'Hz' },
+      { key:'breath',title:'Breath',description:'Soft air at the start of a note',min:0,max:60,step:1,unit:'%' }
+    ];
+    const STORAGE_KEY = 'electric-sea-harmonica:presets:v1';
+    const el = (id) => document.getElementById(id);
+    let controls = { ...DEFAULT_CONTROLS };
+    let audio = null;
+    let awake = false;
+    let mode = 'quiet';
+    const activeNotes = new Set();
+    const heldKeys = new Set();
+    const voices = new Map();
+
+    function formatControl(value, unit) {
+      const shown = unit === 's' ? Number(value).toFixed(1) : Math.round(Number(value)).toLocaleString();
+      return shown + ' ' + unit;
+    }
+    function frequencyFromMidi(midi) { return 440 * Math.pow(2, (midi - 69) / 12); }
+    function setAlert(target, message) { target.textContent = message || ''; }
+
+    class SeaAudio {
+      constructor() {
+        this.context = null;
+        this.filter = null;
+        this.dry = null;
+        this.wet = null;
+      }
+      async wake() {
+        if (!this.context) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) throw new Error('Web Audio is not available in this browser.');
+          const context = new AudioContextClass();
+          const master = context.createGain();
+          const filter = context.createBiquadFilter();
+          const dry = context.createGain();
+          const wet = context.createGain();
+          const convolver = context.createConvolver();
+          filter.type = 'lowpass';
+          convolver.buffer = this.makeImpulse(context);
+          filter.connect(dry); dry.connect(master);
+          filter.connect(convolver); convolver.connect(wet); wet.connect(master);
+          master.gain.value = 0.72;
+          master.connect(context.destination);
+          this.context = context; this.filter = filter; this.dry = dry; this.wet = wet;
+          this.applyControls();
+        }
+        if (this.context.state === 'suspended') await this.context.resume();
+      }
+      applyControls() {
+        if (!this.context) return;
+        const now = this.context.currentTime;
+        this.filter.frequency.setTargetAtTime(controls.tide, now, 0.08);
+        this.dry.gain.setTargetAtTime(0.82 - controls.mist / 100 * 0.18, now, 0.08);
+        this.wet.gain.setTargetAtTime(controls.mist / 100 * 0.52, now, 0.08);
+        for (const voice of voices.values()) {
+          voice.oscillators[0].detune.setTargetAtTime(controls.drift, now, 0.04);
+          voice.oscillators[1].detune.setTargetAtTime(-controls.drift, now, 0.04);
+          voice.vibratoDepth.gain.setTargetAtTime(controls.yearn * 0.22, now, 0.06);
+          voice.breathGain.gain.setTargetAtTime(controls.breath / 100 * 0.012, now, 0.05);
+        }
+      }
+      play(id, frequency) {
+        if (!this.context || !this.filter) return;
+        this.release(id, 0.02);
+        const context = this.context;
+        const now = context.currentTime;
+        const gain = context.createGain();
+        const fundamental = context.createOscillator();
+        const overtone = context.createOscillator();
+        const overtoneGain = context.createGain();
+        const vibrato = context.createOscillator();
+        const vibratoDepth = context.createGain();
+        const noise = context.createBufferSource();
+        const noiseFilter = context.createBiquadFilter();
+        const breathGain = context.createGain();
+        fundamental.type = 'sine'; fundamental.frequency.value = frequency; fundamental.detune.value = controls.drift;
+        overtone.type = 'triangle'; overtone.frequency.value = frequency * 2; overtone.detune.value = -controls.drift;
+        overtoneGain.gain.value = 0.11;
+        vibrato.type = 'sine'; vibrato.frequency.value = 4.6; vibratoDepth.gain.value = controls.yearn * 0.22;
+        vibrato.connect(vibratoDepth); vibratoDepth.connect(fundamental.detune);
+        gain.gain.setValueAtTime(0.0001, now); gain.gain.exponentialRampToValueAtTime(0.19, now + 0.12);
+        fundamental.connect(gain); overtone.connect(overtoneGain); overtoneGain.connect(gain);
+        const noiseBuffer = context.createBuffer(1, Math.floor(context.sampleRate * 0.35), context.sampleRate);
+        const channel = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < channel.length; i += 1) channel[i] = Math.random() * 2 - 1;
+        noise.buffer = noiseBuffer; noise.loop = true; noiseFilter.type = 'highpass'; noiseFilter.frequency.value = 1300;
+        breathGain.gain.value = controls.breath / 100 * 0.012;
+        noise.connect(noiseFilter); noiseFilter.connect(breathGain); breathGain.connect(gain); gain.connect(this.filter);
+        const voice = { oscillators:[fundamental,overtone], vibrato, noise, gain, vibratoDepth, breathGain, stopped:false };
+        voices.set(id, voice);
+        fundamental.start(now); overtone.start(now); vibrato.start(now); noise.start(now);
+      }
+      release(id, seconds) {
+        const voice = voices.get(id);
+        if (!voice || voice.stopped || !this.context) return;
+        voice.stopped = true;
+        const now = this.context.currentTime;
+        const end = now + Math.max(0.025, seconds);
+        voice.gain.gain.cancelScheduledValues(now);
+        voice.gain.gain.setValueAtTime(Math.max(voice.gain.gain.value, 0.0001), now);
+        voice.gain.gain.exponentialRampToValueAtTime(0.0001, end);
+        for (const node of [...voice.oscillators, voice.vibrato, voice.noise]) node.stop(end + 0.04);
+        window.setTimeout(() => { if (voices.get(id) === voice) voices.delete(id); }, Math.max(80, seconds * 1000 + 100));
+      }
+      releasePrefix(prefix) { for (const id of voices.keys()) if (id.startsWith(prefix)) this.release(id, controls.hang); }
+      silence() { for (const id of voices.keys()) this.release(id, 0.12); }
+      drone() { [55,82.41,110].forEach((hz,i) => this.play('drone-' + i,hz)); }
+      pad() { [130.81,196,261.63,329.63].forEach((hz,i) => this.play('pad-' + i,hz)); }
+      makeImpulse(context) {
+        const length = Math.floor(context.sampleRate * 2.4);
+        const impulse = context.createBuffer(2, length, context.sampleRate);
+        for (let c = 0; c < impulse.numberOfChannels; c += 1) {
+          const data = impulse.getChannelData(c);
+          for (let i = 0; i < length; i += 1) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 3.2);
+        }
+        return impulse;
+      }
+      async dispose() { this.silence(); if (this.context && this.context.state !== 'closed') await this.context.close(); this.context = null; }
+    }
+
+    function buildControls() {
+      const grid = el('control-grid');
+      for (const control of CONTROL_DEFINITIONS) {
+        const card = document.createElement('div'); card.className = 'control';
+        const top = document.createElement('div'); top.className = 'control-top';
+        const titleWrap = document.createElement('div');
+        const label = document.createElement('label'); label.htmlFor = 'control-' + control.key; label.textContent = control.title;
+        const description = document.createElement('small'); description.textContent = control.description;
+        titleWrap.append(label, description);
+        const output = document.createElement('output'); output.id = 'value-' + control.key; output.htmlFor = 'control-' + control.key;
+        top.append(titleWrap, output);
+        const input = document.createElement('input'); input.type = 'range'; input.id = 'control-' + control.key; input.min = control.min; input.max = control.max; input.step = control.step; input.value = controls[control.key];
+        input.addEventListener('input', () => { controls[control.key] = Number(input.value); output.textContent = formatControl(controls[control.key], control.unit); if (audio) audio.applyControls(); });
+        const ends = document.createElement('div'); ends.className = 'range-ends';
+        const minText = document.createElement('span'); minText.textContent = control.min + ' ' + control.unit;
+        const maxText = document.createElement('span'); maxText.textContent = Number(control.max).toLocaleString() + ' ' + control.unit;
+        ends.append(minText, maxText); card.append(top, input, ends); grid.append(card);
+        output.textContent = formatControl(controls[control.key], control.unit);
+      }
+    }
+    function buildReeds() {
+      const grid = el('reed-grid');
+      NOTE_NAMES.forEach((note, index) => {
+        const key = Object.entries(KEY_MAP).find(([,value]) => value === index)?.[0] || '';
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'reed' + (note.includes('b') ? ' accidental' : ''); button.disabled = true; button.dataset.index = String(index); button.setAttribute('aria-label', note + ', keyboard ' + key.toUpperCase()); button.setAttribute('aria-pressed', 'false');
+        const number = document.createElement('span'); number.className = 'reed-index'; number.textContent = String(index + 1).padStart(2,'0');
+        const noteName = document.createElement('span'); noteName.className = 'reed-note'; noteName.textContent = note;
+        const keyName = document.createElement('span'); keyName.className = 'reed-key'; keyName.textContent = key;
+        button.append(number,noteName,keyName);
+        button.addEventListener('pointerdown', (event) => { event.preventDefault(); if (!awake) return; try { button.setPointerCapture(event.pointerId); } catch (_) {} startReed(index); });
+        button.addEventListener('pointerup', () => releaseReed(index));
+        button.addEventListener('pointercancel', () => releaseReed(index));
+        button.addEventListener('lostpointercapture', () => releaseReed(index));
+        grid.append(button);
+      });
+    }
+    function updateStatus() {
+      const names = { quiet:'At rest', awake:'Awake', drone:'Sea drone', pad:'Voyage pad' };
+      el('status-text').textContent = names[mode] || 'At rest';
+      el('status-dot').classList.toggle('awake', awake);
+      el('wake-headline').textContent = awake ? 'The reeds are awake' : 'Begin with one breath';
+      el('wake-subline').textContent = awake ? 'Touch a reed or use your keyboard.' : 'Audio begins only when you invite it.';
+      el('wake-button').textContent = awake ? '↻  Wake again' : '▶  Awaken instrument';
+      el('mode-text').textContent = mode === 'drone' || mode === 'pad' || activeNotes.size > 0 ? 'Sound on' : 'Resting';
+      document.querySelectorAll('.reed').forEach((button) => { button.disabled = !awake; });
+      el('reed-rest').hidden = awake;
+      el('drone-button').disabled = !awake; el('pad-button').disabled = !awake; el('silence-button').disabled = !awake;
+      el('drone-button').setAttribute('aria-pressed', String(mode === 'drone'));
+      el('pad-button').setAttribute('aria-pressed', String(mode === 'pad'));
+    }
+    async function awaken() {
+      try {
+        setAlert(el('audio-error'), '');
+        if (!audio) audio = new SeaAudio();
+        await audio.wake(); awake = true; mode = 'awake'; updateStatus();
+      } catch (error) { setAlert(el('audio-error'), error instanceof Error ? error.message : 'The instrument could not start audio.'); }
+    }
+    function startReed(index) {
+      if (!awake) return;
+      if (mode === 'drone') audio.releasePrefix('drone-');
+      if (mode === 'pad') audio.releasePrefix('pad-');
+      mode = 'awake';
+      audio.play('reed-' + index, frequencyFromMidi(NOTE_MIDI[index]));
+      activeNotes.add(index);
+      updateActiveNotes(); updateStatus();
+    }
+    function releaseReed(index) { if (audio) audio.release('reed-' + index, controls.hang); activeNotes.delete(index); updateActiveNotes(); }
+    function updateActiveNotes() { document.querySelectorAll('.reed').forEach((button) => { const active = activeNotes.has(Number(button.dataset.index)); button.classList.toggle('active',active); button.setAttribute('aria-pressed',String(active)); }); }
+    function clearActive() { activeNotes.clear(); updateActiveNotes(); }
+    function activateMode(next) {
+      if (!awake || !audio) return;
+      if (mode === next) { audio.releasePrefix(next === 'drone' ? 'drone-' : 'pad-'); mode = 'awake'; }
+      else { audio.silence(); clearActive(); if (next === 'drone') audio.drone(); else audio.pad(); mode = next; }
+      updateStatus();
+    }
+    function silenceAll() { if (audio) audio.silence(); clearActive(); mode = 'quiet'; updateStatus(); }
+    function readPresets() {
+      try { const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); return Array.isArray(value) ? value.filter((item) => item && typeof item.name === 'string' && item.controls && typeof item.controls === 'object') : []; }
+      catch (_) { return []; }
+    }
+    function writePresets(presets) { localStorage.setItem(STORAGE_KEY, JSON.stringify(presets)); }
+    function renderPresets() {
+      const list = el('preset-list'); list.replaceChildren();
+      const presets = readPresets();
+      if (presets.length === 0) { const empty = document.createElement('p'); empty.className = 'empty'; empty.textContent = 'Your saved sounds will gather here. Tune the controls, give a sound a name, and save it to this device.'; list.append(empty); return; }
+      presets.forEach((preset) => {
+        const row = document.createElement('article'); row.className = 'preset-row';
+        const copy = document.createElement('div'); copy.className = 'preset-copy';
+        const title = document.createElement('h3'); title.className = 'preset-name'; title.textContent = preset.name;
+        const notes = document.createElement('p'); notes.className = 'preset-notes'; notes.textContent = preset.notes || 'A sound saved from the Voyager controls.';
+        const meta = document.createElement('p'); meta.className = 'preset-meta'; meta.textContent = formatControl(Number(preset.controls.hang) || DEFAULT_CONTROLS.hang,'s') + ' · ' + Math.round(Number(preset.controls.yearn) || 0) + '% Yearn · ' + Math.round(Number(preset.controls.mist) || 0) + '% Mist';
+        copy.append(title,notes,meta);
+        const recall = document.createElement('button'); recall.type = 'button'; recall.className = 'preset-button'; recall.textContent = 'Recall'; recall.setAttribute('aria-label','Recall ' + preset.name);
+        recall.addEventListener('click', () => { CONTROL_DEFINITIONS.forEach((control) => { const value = Number(preset.controls[control.key]); if (Number.isFinite(value)) { controls[control.key] = Math.min(control.max,Math.max(control.min,value)); el('control-' + control.key).value = String(controls[control.key]); el('value-' + control.key).textContent = formatControl(controls[control.key],control.unit); } }); if (audio) audio.applyControls(); setAlert(el('preset-message'), preset.name + ' is ready to play.'); });
+        row.append(copy,recall); list.append(row);
+      });
+    }
+    el('wake-button').addEventListener('click', () => void awaken());
+    el('drone-button').addEventListener('click', () => activateMode('drone'));
+    el('pad-button').addEventListener('click', () => activateMode('pad'));
+    el('silence-button').addEventListener('click', silenceAll);
+    el('preset-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = el('preset-name').value.trim();
+      if (!name) { setAlert(el('preset-message'),'Give this sound a name before saving.'); return; }
+      const saveButton = el('save-button'); saveButton.disabled = true; setAlert(el('preset-message'),'');
+      try {
+        const presets = readPresets();
+        presets.unshift({ id: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()), name, notes:el('preset-notes').value.trim(), controls:{ ...controls }, savedAt:new Date().toISOString() });
+        writePresets(presets.slice(0,50));
+        el('preset-form').reset(); renderPresets(); setAlert(el('preset-message'),name + ' is saved on this device.');
+      } catch (_) { setAlert(el('preset-message'),'This browser could not save the preset. Check its local storage settings and try again.'); }
+      finally { saveButton.disabled = false; }
+    });
+    window.addEventListener('keydown', (event) => {
+      if (!awake || event.repeat) return;
+      const target = event.target;
+      if (target instanceof HTMLElement && target.closest('input,textarea,select,[contenteditable="true"]')) return;
+      const key = event.key.toLowerCase(); const index = KEY_MAP[key];
+      if (index == null || heldKeys.has(key)) return;
+      event.preventDefault(); heldKeys.add(key); startReed(index);
+    });
+    window.addEventListener('keyup', (event) => {
+      const key = event.key.toLowerCase(); const index = KEY_MAP[key];
+      if (index == null || !heldKeys.has(key)) return;
+      heldKeys.delete(key); releaseReed(index);
+    });
+    window.addEventListener('blur', () => { for (const key of heldKeys) { const index = KEY_MAP[key]; if (index != null) releaseReed(index); } heldKeys.clear(); });
+    window.addEventListener('pagehide', () => { if (audio) void audio.dispose(); });
+    buildControls(); buildReeds(); renderPresets(); updateStatus();
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "id": "./index.html",
+  "name": "Electric Sea Harmonica",
+  "short_name": "Sea Harmonica",
+  "description": "A small electric sea harmonica for open water and quiet moments.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#07151b",
+  "background_color": "#07151b",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

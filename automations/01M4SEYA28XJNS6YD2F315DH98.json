@@ -1,0 +1,139 @@
+{
+  "version": "2",
+  "flowTitle": "Weekly Voyage Note",
+  "trigger": {
+    "valid": true,
+    "displayName": "Every Monday at 9 AM",
+    "type": "PIECE_TRIGGER",
+    "settings": {
+      "pieceName": "@taskade/automade-internalpiece-schedule",
+      "pieceVersion": "1.0.0",
+      "triggerName": "schedule.weekly",
+      "input": {
+        "timezone": "America/Los_Angeles",
+        "dayOfWeek": [
+          "Monday"
+        ],
+        "timeOfDay": "9:00 AM"
+      }
+    }
+  },
+  "actions": [
+    {
+      "name": "9776e312-9096-4901-b2f0-d69ca8bcbca1",
+      "valid": false,
+      "displayName": "Ask the Voyage Guide",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-openai",
+        "pieceVersion": "1.0.0",
+        "actionName": "agent.ask",
+        "input": {
+          "input": "Write this week's brief Electric Sea Harmonica voyage note for the instrument owner. Use the preset knowledge you have: offer one gentle listening intention, one small sound-control adjustment, and a short reason. Keep it to one compact paragraph on a single line, warm and practical, and do not claim to change the instrument settings.",
+          "agentId": {
+            "type": "flow-template-variable-input-type",
+            "id": "01M4SE3C0H3BKSEJNX5QWY8FNV"
+          },
+          "outputType": "plaintext"
+        }
+      }
+    },
+    {
+      "name": "7532176c-857f-4179-a3f5-15c370af36c3",
+      "valid": false,
+      "displayName": "Save the weekly note",
+      "type": "PIECE",
+      "settings": {
+        "pieceName": "@taskade/automade-internalpiece-taskade",
+        "pieceVersion": "1.0.0",
+        "actionName": "updateCustomFields",
+        "input": {
+          "fields": {
+            "@breth": {
+              "data": {
+                "value": "18"
+              },
+              "rank": "2",
+              "fieldId": "@breth"
+            },
+            "@descr": {
+              "data": {
+                "value": "{{ 9776e312-9096-4901-b2f0-d69ca8bcbca1[\"result\"] }}"
+              },
+              "rank": "1",
+              "fieldId": "@descr"
+            },
+            "@drift": {
+              "data": {
+                "value": "6"
+              },
+              "rank": "3",
+              "fieldId": "@drift"
+            },
+            "@hang1": {
+              "data": {
+                "value": "4.5"
+              },
+              "rank": "8",
+              "fieldId": "@hang1"
+            },
+            "@mist1": {
+              "data": {
+                "value": "72"
+              },
+              "rank": "6",
+              "fieldId": "@mist1"
+            },
+            "@prset": {
+              "data": {
+                "value": "Weekly Voyage Note"
+              },
+              "rank": "0",
+              "fieldId": "@prset"
+            },
+            "@tide1": {
+              "data": {
+                "value": "1800"
+              },
+              "rank": "7",
+              "fieldId": "@tide1"
+            },
+            "@yearn": {
+              "data": {
+                "value": "35"
+              },
+              "rank": "5",
+              "fieldId": "@yearn"
+            },
+            "@sample": {
+              "data": {
+                "value": "Journal"
+              },
+              "rank": "4",
+              "fieldId": "@sample"
+            }
+          },
+          "nodeId": "ef8f3c54-7198-4d8d-9aad-e70eceb8a17d",
+          "projectId": {
+            "type": "flow-template-variable-input-type",
+            "id": "34w3a7jYSMrpXgSS"
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "01M4SE3C0H3BKSEJNX5QWY8FNV": {
+      "id": "01M4SE3C0H3BKSEJNX5QWY8FNV",
+      "rank": "V",
+      "type": "string",
+      "format": "taskade-space-agent-id"
+    },
+    "34w3a7jYSMrpXgSS": {
+      "id": "34w3a7jYSMrpXgSS",
+      "rank": "k",
+      "type": "string",
+      "format": "taskade-project-id"
+    }
+  }
+}
